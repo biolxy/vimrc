@@ -14,3 +14,8 @@ cp vimrc/.vimrc ~
 
 - https://github.com/VundleVim/Vundle.vim
 
+安装过插件后
+```shell
+cp ~/.vim/bundle/molokai/colors/molokai.vim ~/.vim/colors/
+```
+就可以使用`molokai` 配色了
