@@ -19,7 +19,7 @@ filetype plugin on
 set t_Co=256
 "set background=dark
 "colorscheme solarized
-"colorscheme molokai
+colorscheme molokai
 "colorscheme phd
 
 " 高亮显示当前行/列
