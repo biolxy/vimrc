@@ -5,7 +5,8 @@
 ## 使用
 
 ```shell
-git clone  https://github.com/biolxy/vimrc.git 
+git clone  https://github.com/biolxy/vimrc.git
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 cp vimrc/.vimrc ~
 ```
 
