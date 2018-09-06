@@ -19,7 +19,7 @@ filetype plugin on
 set t_Co=256
 "set background=dark
 "colorscheme solarized
-"colorscheme molokai
+colorscheme molokai
 "colorscheme phd
 
 " 高亮显示当前行/列
@@ -99,62 +99,68 @@ set ignorecase
 autocmd BufNewFile .cpp,*.[ch],*.sh,*.java,*py,*.pl exec ":call SetTitle()"
 """*
 func SetTitle()
-        if &filetype == 'sh'
-	    	call setline(1,"\##################################################")
-		    call append(line("."),"\# File Name: ".expand("%"))
-		    call append(line(".")+1,"\# Author: biolxy")
-		    call append(line(".")+2,"\# E-mail: biolxy@aliyun.com")
-		    call append(line(".")+3,"\# Created Time: ".strftime("%c"))
-		    call append(line(".")+4,"\##################################################")
-		    call append(line(".")+5,"\#!/bin/bash")
-		    call append(line(".")+6, "")
+		if &filetype == 'sh'
+			call setline(1,"\##################################################")
+			call append(line("."),"\# File Name: ".expand("%"))
+			call append(line(".")+1,"\# Author: biolxy")
+			call append(line(".")+2,"\# E-mail: biolxy@aliyun.com")
+			call append(line(".")+3,"\# Created Time: ".strftime("%c"))
+			call append(line(".")+4,"\##################################################")
+			call append(line(".")+5,"\#!/bin/bash")
+			call append(line(".")+6, "")
 		endif
-        if &filetype == 'cpp'
-		    call setline( 1, "******************************************************************")
-            call append(line("."), "	> File Name: ".expand("%"))
-            call append(line(".")+1, "    > Author: biolxy")
-            call append(line(".")+2, "    > Mail: biolxy@aliyun.com ")
-            call append(line(".")+3, "    > Created Time: ".strftime("%c"))
-            call append(line(".")+4, "******************************************************************")
-            call append(line(".")+5, "#include<iostream>")
-            call append(line(".")+6, "using namespace std;")
-            call append(line(".")+7, "")
-        endif
-	    if &filetype == 'c'
-		    call setline( 1, "******************************************************************")
-		    call append(line("."), "	> File Name: ".expand("%"))
-	        call append(line(".")+1, "    > Author: biolxy")
-            call append(line(".")+2, "    > Mail: biolxy@aliyun.com ")
-            call append(line(".")+3, "    > Created Time: ".strftime("%c"))
-            call append(line(".")+4, "******************************************************************")
-	        call append(line(".")+5, "#include<stdio.h>")
-	        call append(line(".")+6, "")
-        endif
-	    if &filetype == 'python'
-		    call setline(1,"\#!/usr/bin/env python")
-		    call append(line("."),"\# -*- coding: utf-8 -*-")
-            call append(line(".")+1,"\u\"\"\"")
-            call append(line(".")+2,"\File Name   : ".expand("%").expand(" \."))
-            call append(line(".")+3,"")
-		    call append(line(".")+4,"\Author      : biolxy")
-		    call append(line(".")+5,"\E-mail      : biolxy@aliyun.com")
-		    call append(line(".")+6,"\Created Time: ".strftime("%Y-%m-%d %H:%M:%S"))
-		    call append(line(".")+7,"\version     : 1.0")
-            call append(line(".")+8,"\Function    : ")
-		    call append(line(".")+9,"\"\"\"")
-	    endif
-	    if &filetype == 'perl'
-		    call setline(1,"\##################################################")
-		    call append(line("."),"\# File Name:".expand("%"))
-		    call append(line(".")+1,"\# Author: biolxy")
-		    call append(line(".")+2,"\# E-mail:biolxy@aliyun.com")
-		    call append(line(".")+3,"\# Created Time:".strftime("%c"))
-		    call append(line(".")+4,"\##################################################")
-            call append(line(".")+5,"\#!/usr/bin/perl")
-            call append(line(".")+6,"\use strict;")
-            call append(line(".")+7,"\use warnings;")
-		    call append(line(".")+8,"")
-	    endif
-        autocmd BufNewFile * normal G
+		if &filetype == 'cpp'
+			call setline( 1, "******************************************************************")
+			call append(line("."), "	> File Name: ".expand("%"))
+			call append(line(".")+1, "	> Author: biolxy")
+			call append(line(".")+2, "	> Mail: biolxy@aliyun.com ")
+			call append(line(".")+3, "	> Created Time: ".strftime("%c"))
+			call append(line(".")+4, "******************************************************************")
+			call append(line(".")+5, "#include<iostream>")
+			call append(line(".")+6, "using namespace std;")
+			call append(line(".")+7, "")
+		endif
+		if &filetype == 'c'
+			call setline( 1, "******************************************************************")
+			call append(line("."), "	> File Name: ".expand("%"))
+			call append(line(".")+1, "	> Author: biolxy")
+			call append(line(".")+2, "	> Mail: biolxy@aliyun.com ")
+			call append(line(".")+3, "	> Created Time: ".strftime("%c"))
+			call append(line(".")+4, "******************************************************************")
+			call append(line(".")+5, "#include<stdio.h>")
+			call append(line(".")+6, "")
+			call append(line(".")+7, "int main()")
+			call append(line(".")+8, "{")
+			call append(line(".")+9, "	\/* 备注： *\/")
+			call append(line(".")+10, "	")
+			call append(line(".")+11, "	return 0;")
+			call append(line(".")+12, "}")
+		endif
+		if &filetype == 'python'
+			call setline(1,"\#!/usr/bin/env python")
+			call append(line("."),"\# -*- coding: utf-8 -*-")
+			call append(line(".")+1,"\u\"\"\"")
+			call append(line(".")+2,"\File Name   : ".expand("%").expand(" \."))
+			call append(line(".")+3,"")
+			call append(line(".")+4,"\Author	  : biolxy")
+			call append(line(".")+5,"\E-mail	  : biolxy@aliyun.com")
+			call append(line(".")+6,"\Created Time: ".strftime("%Y-%m-%d %H:%M:%S"))
+			call append(line(".")+7,"\version	  : 1.0")
+			call append(line(".")+8,"\Function	  : ")
+			call append(line(".")+9,"\"\"\"")
+		endif
+		if &filetype == 'perl'
+			call setline(1,"\##################################################")
+			call append(line("."),"\# File Name:".expand("%"))
+			call append(line(".")+1,"\# Author: biolxy")
+			call append(line(".")+2,"\# E-mail:biolxy@aliyun.com")
+			call append(line(".")+3,"\# Created Time:".strftime("%c"))
+			call append(line(".")+4,"\##################################################")
+			call append(line(".")+5,"\#!/usr/bin/perl")
+			call append(line(".")+6,"\use strict;")
+			call append(line(".")+7,"\use warnings;")
+			call append(line(".")+8,"")
+		endif
+		autocmd BufNewFile * normal G
 endfunc
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
