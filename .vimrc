@@ -9,6 +9,14 @@ set showmatch
 " 设置在状态行显示的信息
 "set statusline=\ %<%F[%1*%M%*%n%R%H]%=\ %y\ %0(%{&fileformat}\ [%{(&fenc==\"\"?&enc:&fenc).(&bomb?\",BOM\":\"\")}]\ %c:%l/%L%)
 
+" 显示中文帮助
+if version >= 603
+    set helplang=cn
+    set encoding=utf-8
+endif
+
+" 设置当文件被改动时自动载入
+set autoread
 
 " 开启文件类型侦测
 filetype on
@@ -190,6 +198,6 @@ func SetTitle()
 			call append(line(".")+7,"\use warnings;")
 			call append(line(".")+8,"")
 		endif
-		autocmd BufNewFile * normal G
 endfunc
+autocmd BufNewFile * normal G
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
