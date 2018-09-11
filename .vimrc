@@ -76,14 +76,15 @@ filetype plugin indent on
 
 
 
-" Useful Shortcuts
-map <F5> <esc>:w<cr>:make<cr>
 "ues F2 to control nonumber "
 nnoremap <F2> :set nonumber!<CR>:set foldcolumn=0<CR>
 nnoremap <F3> :set list!<CR>
 " 设置 F10 允许粘贴
 set pastetoggle=<F10>
-
+"列出当前目录文件  
+map <F4> :tabnew .<CR>  
+"打开树状文件目录  
+map <C-F4> \be
 set autoindent
 set backspace=2
 set showcmd
@@ -92,6 +93,34 @@ set foldenable
 set showcmd
 set history=1000
 set ignorecase
+" 光标移动到buffer的顶部和底部时保持3行距离 
+set scrolloff=3
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" C C++ 编译
+func! CompileRunGcc()
+    exec "w"
+    if &filetype == 'c'
+        exec "!g++ % -o %<"
+        exec "! ./%<"
+    elseif &filetype == 'cpp'
+        exec "!g++ % -o %<"
+        exec "! ./%<"
+    elseif &filetype == 'java' 
+        exec "!javac %" 
+        exec "!java %<"
+    elseif &filetype == 'sh'
+        :!./%
+    endif
+endfunc
+map <F5> :call CompileRunGcc()<CR>
+
+"C,C++的调试
+map <F6> :call Rungdb()<CR>
+func! Rungdb()
+    exec "w"
+    exec "!g++ % -g -o %<"
+    exec "!gdb ./%<"
+endfunc
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
