@@ -55,6 +55,7 @@ set shiftwidth=4
 " 让 vim 把连续数量的空格视为一个制表符
 set softtabstop=4
 
+set smarttab
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " >>>>
 " 插件安装
@@ -138,19 +139,19 @@ autocmd BufNewFile .cpp,*.[ch],*.sh,*.java,*py,*.pl exec ":call SetTitle()"
 func SetTitle()
 		if &filetype == 'sh'
 			call setline(1,"\##################################################")
-			call append(line("."),"\# File Name: ".expand("%"))
-			call append(line(".")+1,"\# Author: biolxy")
-			call append(line(".")+2,"\# E-mail: biolxy@aliyun.com")
+			call append(line("."),"\# File Name     : ".expand("%"))
+			call append(line(".")+1,"\# Author      : biolxy")
+			call append(line(".")+2,"\# E-mail      : biolxy@aliyun.com")
 			call append(line(".")+3,"\# Created Time: ".strftime("%c"))
 			call append(line(".")+4,"\##################################################")
 			call append(line(".")+5,"\#!/bin/bash")
-			call append(line(".")+6, "")
+			call append(line(".")+6,"")
 		endif
 		if &filetype == 'cpp'
 			call setline( 1, "******************************************************************")
-			call append(line("."), "	> File Name: ".expand("%"))
-			call append(line(".")+1, "	> Author: biolxy")
-			call append(line(".")+2, "	> Mail: biolxy@aliyun.com ")
+			call append(line("."), "	> File Name     : ".expand("%"))
+			call append(line(".")+1, "	> Author      : biolxy")
+			call append(line(".")+2, "	> Mail        : biolxy@aliyun.com ")
 			call append(line(".")+3, "	> Created Time: ".strftime("%c"))
 			call append(line(".")+4, "******************************************************************")
 			call append(line(".")+5, "#include<iostream>")
@@ -159,9 +160,9 @@ func SetTitle()
 		endif
 		if &filetype == 'c'
 			call setline( 1, "\/******************************************************************")
-			call append(line("."), "	> File Name: ".expand("%"))
-			call append(line(".")+1, "	> Author: biolxy")
-			call append(line(".")+2, "	> Mail: biolxy@aliyun.com ")
+			call append(line("."), "	> File Name     : ".expand("%"))
+			call append(line(".")+1, "	> Author      : biolxy")
+			call append(line(".")+2, "	> Mail        : biolxy@aliyun.com ")
 			call append(line(".")+3, "	> Created Time: ".strftime("%c"))
 			call append(line(".")+4, "******************************************************************/")
 			call append(line(".")+5, "#include<stdio.h>")
@@ -179,18 +180,19 @@ func SetTitle()
 			call append(line(".")+1,"\u\"\"\"")
 			call append(line(".")+2,"\File Name   : ".expand("%").expand(" \."))
 			call append(line(".")+3,"")
-			call append(line(".")+4,"\Author	  : biolxy")
-			call append(line(".")+5,"\E-mail	  : biolxy@aliyun.com")
+			call append(line(".")+4,"\Author      : biolxy")
+			call append(line(".")+5,"\E-mail      : biolxy@aliyun.com")
 			call append(line(".")+6,"\Created Time: ".strftime("%Y-%m-%d %H:%M:%S"))
-			call append(line(".")+7,"\version	  : 1.0")
-			call append(line(".")+8,"\Function	  : ")
+			call append(line(".")+7,"\version     : 1.0")
+			call append(line(".")+8,"\Function    : The author is too lazy to write nothing")
 			call append(line(".")+9,"\"\"\"")
+			call append(line(".")+10,"")
 		endif
 		if &filetype == 'perl'
 			call setline(1,"\##################################################")
-			call append(line("."),"\# File Name:".expand("%"))
-			call append(line(".")+1,"\# Author: biolxy")
-			call append(line(".")+2,"\# E-mail:biolxy@aliyun.com")
+			call append(line("."),"\# File Name     :".expand("%"))
+			call append(line(".")+1,"\# Author      : biolxy")
+			call append(line(".")+2,"\# E-mail      :biolxy@aliyun.com")
 			call append(line(".")+3,"\# Created Time:".strftime("%c"))
 			call append(line(".")+4,"\##################################################")
 			call append(line(".")+5,"\#!/usr/bin/perl")
