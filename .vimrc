@@ -1,7 +1,7 @@
-"python 自动补全
-filetype plugin on  
-autocmd FileType python set omnifunc=pythoncomplete#Complete
+"允许插件
 filetype plugin on
+"代码补全 
+set completeopt=menu
 " 显示状态栏 (默认值为 1, 无法显示状态栏)
 set laststatus=2
 "显示括号配对情况
