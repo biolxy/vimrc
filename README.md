@@ -22,6 +22,7 @@ sed  's/setl buftype=nofile/setl buftype=/g' ~/.vim/bundle/Vundle.vim/autoload/v
 
 安装过插件后
 ```shell
+mkdir -p ~/.vim/colors
 cp ~/.vim/bundle/molokai/colors/molokai.vim ~/.vim/colors/
 ```
 就可以使用`molokai` 配色了
