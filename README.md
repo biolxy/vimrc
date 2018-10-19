@@ -13,6 +13,12 @@ cp vimrc/.vimrc ~
 使用vim编辑`~/.vimrc`  文件，在在vim的非编辑模式下键入`:BundleInstall ` 更新插件，更多用法参见：
 
 - https://github.com/VundleVim/Vundle.vim
+上述步骤如果出现`bufType`相关的错误
+
+执行
+```
+sed  's/setl buftype=nofile/setl buftype=/g' ~/.vim/bundle/Vundle.vim/autoload/vundle/scripts.vim
+```
 
 安装过插件后
 ```shell
