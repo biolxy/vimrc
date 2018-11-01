@@ -7,7 +7,7 @@ set laststatus=2
 "显示括号配对情况
 set showmatch
 " 设置在状态行显示的信息
-"set statusline=\ %<%F[%1*%M%*%n%R%H]%=\ %y\ %0(%{&fileformat}\ [%{(&fenc==\"\"?&enc:&fenc).(&bomb?\",BOM\":\"\")}]\ %c:%l/%L%)
+" set statusline=\ %<%F[%1*%M%*%n%R%H]%=\ %y\ %0(%{&fileformat}\ [%{(&fenc==\"\"?&enc:&fenc).(&bomb?\",BOM\":\"\")}]\ %c:%l/%L%)
 
 " 显示中文帮助
 if version >= 603
@@ -46,16 +46,18 @@ set termencoding=utf-8
 
 " 自适应不同语言的智能缩进
 filetype indent on
-" " 将制表符扩展为空格
-"set expandtab
-"设置编辑时制表符占用空格数
+" 将制表符扩展为空格
+set expandtab
+" 表示一个 tab 显示出来是多少个空格，默认 8
 set tabstop=4
-" " 设置格式化时制表符占用空格数
+" 每一级缩进是多少个空格
 set shiftwidth=4
 " 让 vim 把连续数量的空格视为一个制表符
 set softtabstop=4
-
-set smarttab
+" 根据文件中其他地方的缩进空格个数来确定一个 tab 是多少个空格
+" set smarttab
+" 使用 autocmd 为不同的文件类型应用不同的 tab 设置
+" autocmd BufNewFile,BufRead *.cpp , *.perl ,*.py,  *.python , *.c , *.sh  set expandtab tabstop=4 shiftwidth=4
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " >>>>
 " 插件安装
@@ -104,12 +106,14 @@ set history=1000
 set ignorecase
 " 光标移动到buffer的顶部和底部时保持3行距离 
 set scrolloff=3
+
+"缩进指示线"
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " C C++ 编译
 func! CompileRunGcc()
     exec "w"
     if &filetype == 'c'
-        exec "!g++ % -o %<"
+        exec "!gcc % -o %<"
         exec "! ./%<"
     elseif &filetype == 'cpp'
         exec "!g++ % -o %<"
@@ -130,7 +134,7 @@ func! Rungdb()
     exec "!g++ % -g -o %<"
     exec "!gdb ./%<"
 endfunc
-
+autocmd FileType python noremap <buffer> <F8> :call Autopep8()<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "New .c,.h,.sh,.java file and automatically inserted into the file header
@@ -139,7 +143,7 @@ autocmd BufNewFile .cpp,*.[ch],*.sh,*.java,*py,*.pl exec ":call SetTitle()"
 func SetTitle()
 		if &filetype == 'sh'
 			call setline(1,"\##################################################")
-			call append(line("."),"\# File Name     : ".expand("%"))
+			call append(line("."),"\# File Name   : ".expand("%"))
 			call append(line(".")+1,"\# Author      : biolxy")
 			call append(line(".")+2,"\# E-mail      : biolxy@aliyun.com")
 			call append(line(".")+3,"\# Created Time: ".strftime("%c"))
