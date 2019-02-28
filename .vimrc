@@ -25,20 +25,21 @@ filetype plugin on
 
 " 配色方案
 set t_Co=256
-"set background=dark
-"colorscheme solarized
-colorscheme molokai
-"colorscheme phd
+" set background=dark
+" colorscheme solarized
+" colorscheme molokai
+colorscheme Tomorrow-Night-Eighties
+" colorscheme phd
 
 " 高亮显示当前行/列
-"set cursorline
-"set cursorcolumn
+" set cursorline
+" set cursorcolumn
 
 "语法高亮
 syntax enable
 syntax on
 
-set hlsearch
+"set hlsearch
 set modeline
 "encoding
 set fileencodings=gbk
@@ -75,9 +76,10 @@ Plugin 'ervandew/supertab'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'luochen1990/rainbow'
 Plugin 'davidhalter/jedi-vim'
-"Plugin 'w0rp/ale'
 Plugin 'Shougo/neocomplete.vim'
 Plugin 'Lokaltog/vim-powerline'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'Valloric/YouCompleteMe'
 " 插件列表结束
 call vundle#end()
 filetype plugin indent on
@@ -103,20 +105,86 @@ set cmdheight=1
 set foldenable
 set showcmd
 set history=1000
-set ignorecase
+" set ignorecase 
+" 忽视大小写
 " 光标移动到buffer的顶部和底部时保持3行距离 
 set scrolloff=3
+" set mapleader vim 注释插件 nerdcommenter
+let mapleader = ","
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
 
+" Use compact syntax for prettified multi-line comments
+let g:NERDCompactSexyComs = 1
+
+" Align line-wise comment delimiters flush left instead of following code indentation
+let g:NERDDefaultAlign = 'left'
+
+" Set a language to use its alternate delimiters by default
+let g:NERDAltDelims_java = 1
+
+" Add your own custom formats or override the defaults
+let g:NERDCustomDelimiters = { 'c': { 'left': '//','right': '' } }
+
+" Allow commenting and inverting empty lines (useful when commenting a region)
+let g:NERDCommentEmptyLines = 1
+
+" Enable trimming of trailing whitespace when uncommenting
+let g:NERDTrimTrailingWhitespace = 1
+
+" Enable NERDCommenterToggle to check all selected lines is commented or not 
+let g:NERDToggleCheckAllLines = 1
+
+au BufNewFile,BufRead *.py
+    \ set tabstop=4     |
+    \ set softtabstop=4     |
+    \ set shiftwidth=4     |
+    \ set textwidth=79     |
+    \ set expandtab     |
+    \ set autoindent     |
+    \ set fileformat=unix
+
+" YouCompleteMe  
+set tags+=/usr/include/c++/4.8/stdcpp.tags
+let OmniCpp_DefaultNamespaces = ["_GLIBCXX_STD"] 
+let g:ycm_server_python_interpreter='/usr/bin/python'
+let g:ycm_global_ycm_extra_conf='~/.vim/.ycm_extra_conf.py'
+" 让Vim的补全菜单行为与一般IDE一致  
+set completeopt=longest,menu
+" 离开插入模式后自动关闭预览窗口  
+autocmd InsertLeave * if pumvisible() == 0|pclose|endif 
+let g:ycm_min_num_of_chars_for_completion       =  2         " 触发(符号)补全时需要键入的字符数
+let g:ycm_min_num_identifier_candidate_chars    =  0         " 补全候选项的最小字符数
+let g:ycm_show_diagnostics_ui                   =  0         " 关闭诊断显示功能(已经使用了ale进行异步语法检查)
+let g:ycm_complete_in_comments                  =  1         " 在注释中仍会触发补全
+let g:ycm_complete_in_strings                   =  1         " 在字符串中也会触发补全
+let g:ycm_cache_omnifunc                        =  0         " 禁止缓存匹配项，每次都重新生成匹配项
+
+" 自动触发语义补全
+let g:ycm_semantic_triggers =  { 
+            \ 'c,cpp,python,java,go,erlang,perl': ['re!\w{1}'],
+            \ 'cs,lua,javascript': ['re!\w{1}'],
+            \ }
+" 遇到下列文件时才会开启YCM
+let g:ycm_filetype_whitelist = { 
+            \ "c":1,
+            \ "cpp":1, 
+            \ "objc":1,
+            \ "python":1,
+            \ "sh":1,
+            \ }
+" 跳转到声明或定义处
+nnoremap <leader>j :YcmCompleter GoToDefinitionElseDeclaration<cr>
 "缩进指示线"
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " C C++ 编译
 func! CompileRunGcc()
     exec "w"
     if &filetype == 'c'
-        exec "!gcc % -o %<"
+        exec "!gcc % -o %< -lm"
         exec "! ./%<"
     elseif &filetype == 'cpp'
-        exec "!g++ % -o %<"
+        exec "!g++ -std=c++11 % -o %<"
         exec "! ./%<"
     elseif &filetype == 'java' 
         exec "!javac %" 
@@ -125,8 +193,23 @@ func! CompileRunGcc()
         :!./%
     endif
 endfunc
-map <F5> :call CompileRunGcc()<CR>
 
+func! CompileDebugGcc()
+    exec "w"
+    if &filetype == 'c'
+        exec "!gcc % -o %< -lm"
+        exec "!gdb ./%<"
+    elseif &filetype == 'cpp'
+        exec "!g++ -std=c++11 % -o %<"
+        exec "!gdb ./%<"
+    endif
+endfunc
+
+map <F5> :call CompileRunGcc()<CR>
+map <F7> :call CompileDebugGcc()<CR>
+" nnoremap <F5>   <Esc>:w<CR>:!g++ -std=c++11 % -o %< -lm  && %< <CR>
+" nnoremap <F7>   <Esc>:w<CR>:!g++ -std=c++11 % <CR>
+" nnoremap <F6>   <Esc>:w<CR>:!g++ -std=c++11 -g % -o /tmp/a.out && gdb /tmp/a.out<CR>
 "C,C++的调试
 map <F6> :call Rungdb()<CR>
 func! Rungdb()
@@ -208,3 +291,4 @@ func SetTitle()
 endfunc
 autocmd BufNewFile * normal G
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
