@@ -26,3 +26,7 @@ mkdir -p ~/.vim/colors
 cp ~/.vim/bundle/molokai/colors/molokai.vim ~/.vim/colors/
 ```
 就可以使用`molokai` 配色了
+
+# 我的 bash 和 zsh 配置
+
+# 我的 Xshell 配色
