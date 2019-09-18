@@ -43,7 +43,7 @@ set t_Co=256
 " set background=dark
 " colorscheme solarized
 " colorscheme molokai
-colorscheme Tomorrow-Night-Eighties
+" colorscheme Tomorrow-Night-Eighties
 " colorscheme phd
 
 " 高亮显示当前行/列
@@ -70,7 +70,7 @@ set autoread
 " 常规模式下输入 cM 清除行尾 ^M 符号
 nmap cM :%s/\r$//g<CR>:noh<CR>
 " 启用每行超过80列的字符提示（字体变蓝并加下划线），不启用就注释掉
-au BufWinEnter * let w:m2=matchadd('Underlined', '\%>' . 80 . 'v.\+', -1)
+" au BufWinEnter * let w:m2=matchadd('Underlined', '\%>' . 80 . 'v.\+', -1)
 " 高亮括号与运算符等
 " https://github.com/vim-scripts/cSyntaxAfter/blob/master/plugin/cSyntaxAfter.vim
 au! BufRead,BufNewFile,BufEnter *.{c,cpp,h,java,javascript} call CSyntaxAfter()

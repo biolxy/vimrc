@@ -17,7 +17,7 @@ cp vimrc/.vimrc ~
 
 执行
 ```
-sed  's/setl buftype=nofile/setl buftype=/g' ~/.vim/bundle/Vundle.vim/autoload/vundle/scripts.vim
+sed -i 's/setl buftype=nofile/setl buftype=/g' ~/.vim/bundle/Vundle.vim/autoload/vundle/scripts.vim
 ```
 
 安装过插件后
@@ -25,7 +25,7 @@ sed  's/setl buftype=nofile/setl buftype=/g' ~/.vim/bundle/Vundle.vim/autoload/v
 mkdir -p ~/.vim/colors
 cp ~/.vim/bundle/molokai/colors/molokai.vim ~/.vim/colors/
 ```
-就可以使用`molokai` 配色了
+在`~/.vimrc`中简单编辑一下，就可以使用`molokai` 配色了
 
 # 我的 bash 和 zsh 配置
 
