@@ -29,4 +29,12 @@ cp ~/.vim/bundle/molokai/colors/molokai.vim ~/.vim/colors/
 
 # 我的 bash 和 zsh 配置
 
+```shell
+
+# zsh 主题
+
+cp vimrc/ys2.zsh-theme ~/.oh-my-zsh/themes/
+
+```
+
 # 我的 Xshell 配色
