@@ -27,6 +27,25 @@ cp ~/.vim/bundle/molokai/colors/molokai.vim ~/.vim/colors/
 ```
 在`~/.vimrc`中简单编辑一下，就可以使用`molokai` 配色了
 
+## YouCompleteMe 的配置
+- 参考 https://blog.csdn.net/alex_bean/article/details/83821017
+- 我的vim 编译命令
+```shell
+./configure --with-features=huge --enable-pythoninterp=yes --enable-python3interp --enable-cscope --enable-fontset --with-python-config-dir=/root/anaconda3/envs/py27/bin/python-config --with-python3-config-dir=/root/anaconda3/bin/python3.7m-config
+```
+如果源码编译 vim 后，shell 下执行 vim --version， 显示 +python/dyn +python3/dyn，但是在vim 编辑python文件时候，依然显示 ` Python library could not be loaded`等，那么你需要配置一下你的.vimrc 中 YouCompleteMe的相关地址 `pythondll` `pythonthreedll` 
+
+```shell
+" YouCompleteMe
+set tags+=/usr/include/c++/4.8/stdcpp.tags
+set pythonthreedll=/root/anaconda3/lib/libpython3.7m.so.1
+set pythondll=/root/anaconda3/envs/py27/lib/libpython2.7.so.1.0
+let OmniCpp_DefaultNamespaces = ["_GLIBCXX_STD"]
+let g:ycm_server_python_interpreter='/root/anaconda3/bin/python'
+let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/.ycm_extra_conf.py'
+```
+
+
 # 我的 bash 和 zsh 配置
 
 ```shell

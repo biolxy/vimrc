@@ -42,7 +42,7 @@ filetype plugin on
 set t_Co=256
 " set background=dark
 " colorscheme solarized
-" colorscheme molokai
+colorscheme molokai
 " colorscheme Tomorrow-Night-Eighties
 " colorscheme phd
 
@@ -178,9 +178,11 @@ au BufNewFile,BufRead *.py
 
 " YouCompleteMe  
 set tags+=/usr/include/c++/4.8/stdcpp.tags
+set pythonthreedll=/root/anaconda3/lib/libpython3.7m.so.1
+set pythondll=/root/anaconda3/envs/py27/lib/libpython2.7.so.1.0
 let OmniCpp_DefaultNamespaces = ["_GLIBCXX_STD"] 
-let g:ycm_server_python_interpreter='/usr/bin/python'
-let g:ycm_global_ycm_extra_conf='~/.vim/.ycm_extra_conf.py'
+let g:ycm_server_python_interpreter='/root/anaconda3/bin/python'
+let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/.ycm_extra_conf.py'
 " 让Vim的补全菜单行为与一般IDE一致  
 set completeopt=longest,menu
 " 离开插入模式后自动关闭预览窗口  
