@@ -2,8 +2,8 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/lixy/.oh-my-zsh"
-
+export ZSH=$HOME/.oh-my-zsh
+source $HOME/.oh-my-zsh/oh-my-zsh.sh
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
@@ -61,11 +61,9 @@ HIST_STAMPS="yyyy-mm-dd"
 plugins=(
   git
   zsh-syntax-highlighting
-  autojump
 )
 # autojump
 # source $ZSH/oh-my-zsh.sh
-source /home/lixy/.oh-my-zsh/oh-my-zsh.sh
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -97,10 +95,8 @@ source /home/lixy/.oh-my-zsh/oh-my-zsh.sh
 # added by Miniconda3 installer
 # export PATH="/home/lixy/miniconda3/bin:$PATH"
 # added by Miniconda2 installer
-export PATH="/home/lixy/miniconda2/bin:$PATH"
-export PATH="/home/lixy/.ycm_build/libclang:$PATH"
 #为历史纪录中的命令添加时间戳
-export HISTFILE=/home/lixy/.zhistory
+export HISTFILE=$HOME/.zhistory
 setopt EXTENDED_HISTORY
 setopt hist_ignore_space
 alias ll='ls -alFh'
@@ -111,12 +107,8 @@ alias le='less -SN'
 alias his='history'
 alias c='clear'
 # alias vv='vim'
-# alias 'z'='exec zsh'
 # alias rm=/home/lixy/bin/saferm.sh
-alias rm=/home/lixy/bin/remove.sh
-alias py35='source activate py35'
-alias n2='source activate ngs2'
-alias deac='source deactivate'
+alias rm=$HOME/bin/remove.sh
 # alias 'icdiff'='/home/lixy/soft/icdiff/icdiff'
 # alias 'axel'='/home/lixy/soft/axel-2.4/axel'
 #export TMPDIR='/tmp'

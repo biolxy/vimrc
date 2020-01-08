@@ -50,10 +50,21 @@ let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/.ycm_extra_conf.py'
 
 ```shell
 
-# zsh 主题
-
-cp vimrc/ys2.zsh-theme ~/.oh-my-zsh/themes/
-
+# 安装 zsh 主题
 ```
+cp vimrc/ys2.zsh-theme ~/.oh-my-zsh/themes/
+```
+
+# 安装zsh
+- https://segmentfault.com/a/1190000013857738
+- https://harttle.land/2016/10/25/install-oh-my-zsh-locally.html
+- https://github.com/ohmyzsh/ohmyzsh
+
+## 安装 zsh 命令行语法高亮插件 `zsh-syntax-highlighting`
+```
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+```
+
+
 
 # 我的 Xshell 配色
