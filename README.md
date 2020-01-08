@@ -48,14 +48,13 @@ let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/.ycm_extra_conf.py'
 
 # 我的 bash 和 zsh 配置
 
-```shell
 
-# 安装 zsh 主题
-```
+## 安装 zsh 主题
+```shell
 cp vimrc/ys2.zsh-theme ~/.oh-my-zsh/themes/
 ```
 
-# 安装zsh
+## 安装zsh
 - https://segmentfault.com/a/1190000013857738
 - https://harttle.land/2016/10/25/install-oh-my-zsh-locally.html
 - https://github.com/ohmyzsh/ohmyzsh
@@ -68,3 +67,4 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:
 
 
 # 我的 Xshell 配色
+
