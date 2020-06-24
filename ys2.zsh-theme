@@ -37,6 +37,8 @@ ys_hg_prompt_info() {
 
 local exit_code="%(?,,C:%{$fg[red]%}%?%{$reset_color%})"
 
+# node_name='$(hostname -s)'
+
 # Prompt format:
 #
 # PRIVILEGES USER @ MACHINE in DIRECTORY on git:BRANCH STATE [TIME] C:LAST_EXIT_CODE
@@ -48,7 +50,7 @@ local exit_code="%(?,,C:%{$fg[red]%}%?%{$reset_color%})"
 # $
 PROMPT="\
 %{$terminfo[bold]$fg[blue]%}# %{$reset_color%}\
-%(#,%{$fg[green]%}%n%{$reset_color%},%{$fg[yellow]%}%n)\
+%(#,%{$fg[green]%}%{$fg[black]%}%n%{$reset_color%},%{$fg[yellow]%}%n)\
 %{$fg[white]%}@\
 %{$fg[white]%}%m \
 %{$fg[white]%}in \

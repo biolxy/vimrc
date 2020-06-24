@@ -103,6 +103,7 @@ source $ZSH/oh-my-zsh.sh
 export HISTFILE=$HOME/.zhistory
 setopt EXTENDED_HISTORY
 setopt hist_ignore_space
+setopt nonomatch
 alias ll='ls -alFh'
 alias la='ls -A'
 alias l='ls -CF'
@@ -110,6 +111,11 @@ alias ls='ls --color=tty'
 alias le='less -SN'
 alias his='history'
 alias c='clear'
+alias rp='realpath'
+alias onco='conda activate onco'
+alias deac='conda deactivate'
+alias ossutil='/data/ONCO/pipeline-programs/ossutil64'
+alias run_Yikon_aliyun='/data/ONCO/local_run/run_Yikon_aliyun/run_Yikon_aliyun.sh'
 # alias vv='vim'
 # alias rm=/home/lixy/bin/saferm.sh
 alias rm=$HOME/bin/remove.sh
@@ -138,3 +144,64 @@ function extract(){
         echo "'$1' is not a valid file!"
     fi
 }
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/data/software/ONCO/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/data/software/ONCO/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/data/software/ONCO/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/data/software/ONCO/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+export JAVA_HOME=/data/software/ONCO/java/jdk1.8.0_241
+export JAVA_BIN=$JAVA_HOME/bin
+export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
+export PATH=$JAVA_HOME/bin:$PATH
+
+export LS_COLORS=$LS_COLORS"*.pdf=01;33:*.py=00;35:*.pl=00;32:*.sh=00;35:*.xls=04;36:*.png=04;35;43:*.fa=04;33:*.R=00;32:*.r=00;32:*.vcf=04;35:*.bed=04;35:"
+
+export LESSHARSET=utf-8
+
+export PERL5LIB=/data/software/ONCO/anaconda3/envs/onco/lib/5.26.2:$PERL5LIB
+  
+export R_LIBS_USER=/mnt/pipeline-programs/R_library:${R_LIBS_USER}
+
+# export PATH=/data/software/ONCO/anaconda3/envs/onco/bin:$PATH
+#
+umask 0002
+
+
+
+# Home
+bindkey '\e[1~' beginning-of-line
+# End
+bindkey '\e[4~' end-of-line
+
+# Keypad
+# 0 . Enter
+bindkey -s "^[Op" "0"
+bindkey -s "^[Ol" "."
+bindkey -s "^[OM" "^M"
+# 1 2 3
+bindkey -s "^[Oq" "1"
+bindkey -s "^[Or" "2"
+bindkey -s "^[Os" "3"
+# 4 5 6
+bindkey -s "^[Ot" "4"
+bindkey -s "^[Ou" "5"
+bindkey -s "^[Ov" "6"
+# 7 8 9
+bindkey -s "^[Ow" "7"
+bindkey -s "^[Ox" "8"
+bindkey -s "^[Oy" "9"
+# + -  * /
+bindkey -s "^[Ok" "+"
+bindkey -s "^[Om" "-"
+bindkey -s "^[Oj" "*"
+bindkey -s "^[Oo" "/"
