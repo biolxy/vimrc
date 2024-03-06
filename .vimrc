@@ -90,6 +90,8 @@ function! CSyntaxAfter()
 endfunction
 
 
+" 使用鼠标
+set mouse=a
 
 " 表示一个 tab 显示出来是多少个空格，默认 8
 set tabstop=4
